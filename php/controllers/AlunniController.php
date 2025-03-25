@@ -12,4 +12,20 @@ class AlunniController
     $response->getBody()->write(json_encode($results));
     return $response->withHeader("Content-type", "application/json")->withStatus(200);
   }
+
+  public function destroy(Request $request, Response $response, $args){
+    $response->getBody()->write("ciao");
+    return $response;
+  }
+
+  public function create(Request $request, Response $response, $args){
+    
+    $body = json_decode($request->getBody()->getContents(), true);    
+    $nome = $body["nome"];
+    $cognome = $body["cognome"];;
+
+    $response->getBody()->write($cognome);
+    return $response;
+  }
+
 }
