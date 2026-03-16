@@ -106,7 +106,6 @@ class AlunniController
 
     $nome = $data['nome'] ?? null;
     $cognome = $data['cognome'] ?? null;
-    $classe = $data['classe'] ?? null;
 
     // Costruisci la query dinamicamente in base ai campi presenti
     $fields = [];
@@ -122,12 +121,6 @@ class AlunniController
     if ($cognome) {
       $fields[] = "cognome = ?";
       $params[] = $cognome;
-      $types .= "s";
-    }
-
-    if ($classe) {
-      $fields[] = "classe = ?";
-      $params[] = $classe;
       $types .= "s";
     }
 
