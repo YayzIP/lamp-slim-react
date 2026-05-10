@@ -14,6 +14,12 @@ $app->get('/test', function (Request $request, Response $response, array $args) 
     return $response;
 });
 
+$app->get('/', function (Request $request, Response $response, array $args) {
+    $payload = json_encode(['status' => 'ok']);
+    $response->getBody()->write($payload);
+    return $response->withHeader("Content-type", "application/json");
+});
+
 $app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
     $name = $args['name'];
     $response->getBody()->write("Hello, $name");
@@ -21,5 +27,6 @@ $app->get('/hello/{name}', function (Request $request, Response $response, array
 });
 
 $app->get('/alunni', "AlunniController:index");
+$app->get('/api/alunni', "AlunniController:index");
 
 $app->run();
