@@ -14,6 +14,11 @@ $app->get('/test', function (Request $request, Response $response, array $args) 
     return $response;
 });
 
+$app->get('/up', function (Request $request, Response $response, array $args) {
+    $response->getBody()->write("OK");
+    return $response;
+});
+
 $app->get('/', function (Request $request, Response $response, array $args) {
     $payload = json_encode(['status' => 'ok']);
     $response->getBody()->write($payload);
